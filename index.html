@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>Open in Outlook</title>
+  <title>Outlook handoff retired</title>
   <style>
     :root { color-scheme: light dark; }
     * { box-sizing: border-box; }
@@ -64,39 +64,9 @@
 <body>
   <main>
     <div class="logo" aria-hidden="true">O</div>
-    <h1>Opening Outlook…</h1>
-    <p id="status">If Outlook does not open automatically, tap the button below.</p>
-    <a id="open-button" href="#">Open in Outlook</a>
-    <small>The message identifier stays in this page’s URL fragment and is not sent to the web host.</small>
+    <h1>This handoff is retired</h1>
+    <p>The experimental Outlook launcher required extra browser confirmations on iPhone and did not reliably open Outlook on desktop, so DEBRA no longer uses it.</p>
+    <small>No message identifier in this page’s URL fragment is sent to the web host.</small>
   </main>
-  <script>
-    (() => {
-      const encodedRestId = window.location.hash.slice(1);
-      const button = document.getElementById('open-button');
-      const status = document.getElementById('status');
-
-      if (!encodedRestId) {
-        button.hidden = true;
-        status.textContent = 'This Outlook link is incomplete.';
-        return;
-      }
-
-      let restId;
-      try {
-        restId = decodeURIComponent(encodedRestId);
-      } catch {
-        button.hidden = true;
-        status.textContent = 'This Outlook link is malformed.';
-        return;
-      }
-
-      const outlookUrl = 'ms-outlook://emails/message/open?restID=' + encodeURIComponent(restId);
-      button.href = outlookUrl;
-
-      window.setTimeout(() => {
-        window.location.assign(outlookUrl);
-      }, 250);
-    })();
-  </script>
 </body>
 </html>
